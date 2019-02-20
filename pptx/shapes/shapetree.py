@@ -463,7 +463,7 @@ class SlideShapes(_BaseGroupShapes):
     """
 
     def add_movie(self, movie_file, left, top, width, height,
-                  poster_frame_image=None, mime_type=CT.VIDEO):
+                  poster_frame_image=None, mime_type=CT.VIDEO, autoplay=False):
         """Return newly added movie shape displaying video in *movie_file*.
 
         **EXPERIMENTAL.** This method has important limitations:
@@ -488,7 +488,7 @@ class SlideShapes(_BaseGroupShapes):
             poster_frame_image, mime_type
         )
         self._spTree.append(movie_pic)
-        self._add_video_timing(movie_pic)
+        self._add_video_timing(movie_pic, autoplay)
         return self._shape_factory(movie_pic)
 
     def add_table(self, rows, cols, left, top, width, height):
@@ -546,7 +546,7 @@ class SlideShapes(_BaseGroupShapes):
         )
         return graphicFrame
 
-    def _add_video_timing(self, pic):
+    def _add_video_timing(self, pic, autoplay):
         """Add a `p:video` element under `p:sld/p:timing`.
 
         The element will refer to the specified *pic* element by its shape
@@ -554,7 +554,10 @@ class SlideShapes(_BaseGroupShapes):
         """
         sld = self._spTree.xpath('/p:sld')[0]
         childTnLst = sld.get_or_add_childTnLst()
-        childTnLst.add_video(pic.shape_id)
+        if autoplay == False:
+            childTnLst.add_video(pic.shape_id)
+        elif autoplay == True:
+            childTnLst.add_autoplay_video(pic.shape_id)
 
     def _shape_factory(self, shape_elm):
         """

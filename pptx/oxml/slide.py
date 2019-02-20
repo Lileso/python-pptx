@@ -312,6 +312,25 @@ class CT_TimeNodeList(BaseOxmlElement):
         video = parse_xml(video_xml)
         self.append(video)
 
+    def add_autoplay_video(self, shape_id):
+        """Add a new `p:video` child element for movie having *shape_id*."""
+        video_xml = (
+            '<p:video %s>\n'
+            '  <p:cMediaNode vol="80000">\n'
+            '    <p:cTn id="%d" fill="hold" display="0">\n'
+            '      <p:stCondLst>\n'
+            '        <p:cond delay="0"/>\n'
+            '      </p:stCondLst>\n'
+            '    </p:cTn>\n'
+            '    <p:tgtEl>\n'
+            '      <p:spTgt spid="%d"/>\n'
+            '    </p:tgtEl>\n'
+            '  </p:cMediaNode>\n'
+            '</p:video>\n' % (nsdecls('p'), self._next_cTn_id, shape_id)
+        )
+        video = parse_xml(video_xml)
+        self.append(video)
+
     @property
     def _next_cTn_id(self):
         """Return the next available unique ID (int) for p:cTn element."""
