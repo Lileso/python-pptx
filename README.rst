@@ -25,6 +25,7 @@ python-pptx.
 
 
 ==========New Feature Added==========
+
 Autoplay for Videos
 I've added an option for autoplay. This is still quite buggy but I am going to keep working on it in the background. 
 To enable this just add the tag "autoplay=True" to the end of your add_movie statment as seen below.
