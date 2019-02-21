@@ -477,6 +477,6 @@ class CT_TLTimeNodeSequence(BaseOxmlElement):
 
     _tag_seq = ('p:cTn', 'p:prevCondLst', 'p:nextCondLst')
     cTn = OneAndOnlyOne('p:cTn')
-    prevCondLst = ZeroOrOne('p:prevCondLst', successors=('p:cTn'))
-    nextCondLst = ZeroOrOne('p:nextCondLst', successors=('p:cTn', 'p:prevCondLst'))
+    prevCondLst = ZeroOrOne('p:prevCondLst',)
+    nextCondLst = ZeroOrOne('p:nextCondLst',)
     del _tag_seq
