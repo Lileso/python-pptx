@@ -313,7 +313,7 @@ from .slide import (  # noqa: E402
     CT_Background, CT_BackgroundProperties, CT_CommonSlideData,
     CT_NotesMaster, CT_NotesSlide, CT_Slide, CT_SlideLayout,
     CT_SlideLayoutIdList, CT_SlideLayoutIdListEntry, CT_SlideMaster,
-    CT_SlideTiming, CT_TimeNodeList, CT_TLMediaNodeVideo
+    CT_SlideTiming, CT_TimeNodeList, CT_TLMediaNodeVideo, CT_TLTimeNodeSequence
 )
 register_element_cls('p:bg',             CT_Background)
 register_element_cls('p:bgPr',           CT_BackgroundProperties)
@@ -327,6 +327,7 @@ register_element_cls('p:sldLayoutId',    CT_SlideLayoutIdListEntry)
 register_element_cls('p:sldLayoutIdLst', CT_SlideLayoutIdList)
 register_element_cls('p:sldMaster',      CT_SlideMaster)
 register_element_cls('p:timing',         CT_SlideTiming)
+register_element_cls('p:seq',            CT_TLTimeNodeSequence)
 register_element_cls('p:video',          CT_TLMediaNodeVideo)
 
 
